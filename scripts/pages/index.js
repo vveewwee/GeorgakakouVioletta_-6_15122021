@@ -1,6 +1,7 @@
-    async function getPhotographers() {
+function getPhotographers() = async () => {
         // Penser à remplacer par les données récupérées dans le json
-        const photographers = [
+        const photographers = await fetch ('data/photographers.json');
+       /* const photographers = [
             {
                 "name": "Ma data test",
                 "id": 1,
@@ -19,13 +20,12 @@
                 "price": 500,
                 "portrait": "account.png"
             },
-        ]
+        ]*/
         // et bien retourner le tableau photographers seulement une fois
-        return ({
-            photographers: [...photographers, ...photographers, ...photographers]})
+        return ({photographers})
     }
 
-    async function displayData(photographers) {
+function displayData = async (photographers) => {
         const photographersSection = document.querySelector(".photographer_section");
 
         photographers.forEach((photographer) => {
