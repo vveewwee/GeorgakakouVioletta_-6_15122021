@@ -20,7 +20,7 @@ const init = async() => {
     // Récupère les datas des photographes
     const  photographers = await getPhotographers();
     displayData(photographers);
-};logn fcx54
+};
 
 //onload init
 window.onload = () => {
