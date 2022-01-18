@@ -9,7 +9,7 @@
   </head>
   <body>
     <header>
-      <img src="assets/images/logo.png" class="logo" />
+      <img src="assets/images/logo.png" class="logo" onclick="javascript:returnHome();"/>
     </header>
     <main id="main">
       <div class="photograph-header">
@@ -22,15 +22,22 @@
           <h2>Contactez-moi</h2>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-				<form>
+				<form name="fillIn">
 					<div>
-						<label>Prénom</label>
-						<input />
+						<label for="prenom">Prénom</label>
+						<input id="prenom"/>
+            <label for="nom">Nom</label>
+            <input id="nom"/>
+            <label for="email">Email</label>
+            <input id="email"/>
+            <label fo="message" type="text">Votre message</label>
+            <input id="message"/>
 					</div>
           <button class="contact_button">Envoyer</button>
 				</form>
 			</div>
 		</div>
     <script src="/scripts/utils/contactForm.js"></script>
+    <script src="scripts/pages/photographer.js"></script>
   </body>
 </html>

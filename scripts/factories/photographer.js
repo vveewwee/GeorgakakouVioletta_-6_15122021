@@ -10,7 +10,7 @@ function photographerFactory(data) {
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
         const link = document.createElement('a');
-        img.addEventListener(onclick, getMediaInfo(id));
+     //   img.addEventListener(onclick, getMediaInfo(id));
         link.href= "/photographer.html";
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;

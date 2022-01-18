@@ -1,5 +1,5 @@
 //Mettre le code JavaScript lié à la page photographer.html
-
+/*
 const getMedia = async () =>{
     const response2 = await fetch ('data/photographers.json');
     const data2 = await response2.json();
@@ -15,7 +15,7 @@ const getMediaInfo= async(id) =>{
     const  media = await getMedia();
     displayMedia(media, id);
 };
-/*
+
 //header
     //img .logo
 //main #main
@@ -31,10 +31,14 @@ const getMediaInfo= async(id) =>{
                 //label
                 //input ...
             //btn .contact_button
-*/          
+        
 function photographerMediaFactory(data2, identity) {
     const { id, photographerId, title, image, likes, date, price } = data2;
-     
-    const   
             
+};
+*/
+
+function returnHome(){
+//    const logoReturn = document.querySelector(".logo").setAttribute("href","/index.html" );
+    window.location.href= "../index.html";
 }
