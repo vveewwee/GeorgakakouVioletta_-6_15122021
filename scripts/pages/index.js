@@ -13,7 +13,9 @@ const displayData = async (photographers) => {
         const photographerModel = photographerFactory(photographer);
         const userCardDOM = photographerModel.getUserCardDOM();
         photographersSection.appendChild(userCardDOM);
+        //       createMediaFactory(identity);
     });
+
 };
 
 const init = async() => {
