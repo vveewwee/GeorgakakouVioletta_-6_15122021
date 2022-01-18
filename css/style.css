@@ -48,3 +48,19 @@ h1 {
     height: 200px;
     width: 200px;
 }
+
+.legend{
+    display:flex;
+    flex-flow: column nowrap;
+    font-size: 12pt;
+    text-align: center;
+}
+.legend > * {
+    margin:1px;
+}
+.legend h5{
+    color:#901C1C;
+}
+.legend :nth-child(3){
+    color:gray;
+}

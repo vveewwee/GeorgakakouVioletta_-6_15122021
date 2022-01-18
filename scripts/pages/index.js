@@ -4,7 +4,7 @@ const getPhotographers = async () => {
         const data = await response.json();
         // et bien retourner le tableau photographers seulement une fois
         return (data.photographers);
-}
+};
 
 const displayData = async (photographers) => {
     const photographersSection = document.querySelector(".photographer_section");
