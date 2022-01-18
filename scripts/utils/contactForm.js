@@ -15,10 +15,10 @@ function closeModal() {
 
 //retrieve clien info, save them in an array
 
-const   prenom = document.querySelector("#nom");
-const   nom = document.querySelector("#nom");
-const   email = document.querySelector("#email");
-const   message = document.querySelector("#message");
+const   prenom = document.querySelector("#prenom").setAttribute('aria-labelledby','prenom');
+const   nom = document.querySelector("#nom").setAttribute('aria-labelledby','nom');
+const   email = document.querySelector("#email").setAttribute('aria-labelledby','email');
+const   message = document.querySelector("#message").setAttribute('aria-labelledby','message');
 
 class Client{
     constructor(name, lastname, mail, text){
