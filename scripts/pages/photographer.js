@@ -2,8 +2,24 @@
 function returnHome(){
     window.location.href= "../index.html";
 }
+/*
+class mediaArray{
+    constructor(id, photographerId, title, image, likes, date, price){
+        this.id = id,
+        this.photographerId = photographerId,
+        this.title = title,
+        this.image = image,
+        this.likes = likes,
+        this.date = date,
+        this.price = price
+    }
+};
 
-//Mettre le code JavaScript lié à la page photographer.html
+const individualPhoto = new mediaArray(photographerMedia.id,photographerMedia.photographerId,
+                photographerMedia.title, photographerMedia.image, photographerMedia.likes,
+                photographerMedia.date, photographerMedia.price);*/
+
+//get Media info
 const getMedia = async () =>{
     const response2 = await fetch ('data/photographers.json');
     const data2 = await response2.json();
@@ -11,11 +27,16 @@ const getMedia = async () =>{
 };
 
 const displayMedia = async (media, iden) =>{
-//    const photographerMedia = photographerMediaFactory(media);
     media.forEach((photographerMedia) => {
-        console.log(photographerMedia.id);
         if (photographerMedia.photographerId === iden){
-            console.log("photographerMedia IFF");            
+            const photoDisplayDiv = document.querySelector(".photograph-display");
+            const photos = document.createElement('img');
+            photos.setAttribute("class", "photodisplay");
+            const imagePhoto = photographerMedia.image;
+            photos.setAttribute("src", imagePhoto);
+            photoDisplayDiv.append(photos);
+//                console.log(individualPhoto);
+//            photographerMediaFactory(individualPhoto);            
         }
     });
 };
@@ -25,20 +46,3 @@ const getMediaInfo= async(id) =>{
     // console.log(id);
     displayMedia(media, id);
 };
-
-
-//header
-    //img .logo
-//main #main
-    //div .photograph-header
-        //btn .contact_button (display modal());
-//div #contact_modal
-    //div .modal
-        //header
-            //h2
-            //img (closeModal());
-        //form
-            //div
-                //label
-                //input ...
-            //btn .contact_button 

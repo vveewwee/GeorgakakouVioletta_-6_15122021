@@ -31,15 +31,17 @@ function photographerFactory(data) {
     }
     return { name, picture, getUserCardDOM }
 }
-/*
-function photographerMediaFactory(data2, identity) {
-    const { id, photographerId, title, image, likes, date, price } = data2;
 
-    const headerName = document.createElement('h1');
-    const photographerID = 
-    
+function photographerMediaFactory(photoInfo) {
+    const photoDisplayDiv = document.querySelector(".photograph-display");
+    const photos = document.createElement('img');
+    photos.setAttribute("class", "photodisplay");
+    const imagePhoto = photoInfo.image;
+    photos.setAttribute("src", imagePhoto);
+    photoDisplayDiv.appendChild(photos);
+
 };
-
+/*
 function createMediaFactory(identity){
     return(identity);
 }*/
