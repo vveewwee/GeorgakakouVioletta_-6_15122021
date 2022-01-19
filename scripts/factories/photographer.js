@@ -4,14 +4,14 @@ function photographerFactory(data) {
 
 //    const picture = `assets/photographers/${portrait}`;
     const picture = data.portrait;
-
+    
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
         const img = document.createElement( 'img' );
-        img.setAttribute("src", picture);
+        img.src ="SamplePhotos/Photographers ID Photos/" + picture;
         const link = document.createElement('a');
-        img.addEventListener(onclick, getMediaInfo(id));
-        link.href= "/photographer.html";
+    //  img.addEventListener(onclick, getMediaInfo(id));
+        link.href= "/photographer.html?id=" + id;
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         const legend = document.createElement( 'div' );
@@ -31,7 +31,7 @@ function photographerFactory(data) {
     }
     return { name, picture, getUserCardDOM }
 }
-
+/*
 function photographerMediaFactory(photoInfo) {
     const photoDisplayDiv = document.querySelector(".photograph-display");
     const photos = document.createElement('img');
@@ -41,7 +41,7 @@ function photographerMediaFactory(photoInfo) {
     photoDisplayDiv.appendChild(photos);
 
 };
-/*
+
 function createMediaFactory(identity){
     return(identity);
 }*/
