@@ -5,13 +5,13 @@ const getData = async () =>{
     return (data);
 };
 
-const displayMedia = (photographer, mediaE) =>{
+const displayMedia = (photographer, medias) =>{
     const photoDisplayArticle = document.createElement ('article');
             photoDisplayArticle.setAttribute("class", "photograph-display");
             const main = document.querySelector("#main");
             main.appendChild(photoDisplayArticle);
 
-    mediaE.forEach((photographerMedia) => {
+    medias.forEach((photographerMedia) => {
             const photoDisplayDiv = document.createElement('div');
             photoDisplayDiv.setAttribute("class", "photograph-div");
             photoDisplayArticle.appendChild(photoDisplayDiv);
@@ -39,14 +39,47 @@ const displayMedia = (photographer, mediaE) =>{
             likes.appendChild(iconHeart);
 
     });
+    //show photographers info
+    const   photographerInfoDisp = document.querySelector(".photograph-header");
+    const   showNameDiv = document.createElement('div');
+    showNameDiv.setAttribute("class", "photograph-header-name");
+    photographerInfoDisp.appendChild(showNameDiv);
+
+    const nameShowDiv = document.createElement('h1');
+    nameShowDiv.innerText = photographer.name;
+    showNameDiv.appendChild(nameShowDiv);
+
+    const locationShow = document.createElement('h4');
+    locationShow.innerText = photographer.city + " , " + photographer.country;
+    showNameDiv.appendChild(locationShow);
+    const taglineShow = document.createElement('h4');
+    taglineShow.innerText = photographer.tagline;
+    showNameDiv.appendChild(taglineShow);
+
+/*    const showVideo = document.createElement('video');
+    showVideo.src = photographer.video;
+    showVideo.setAttribute("controls");
+    photoDisplayDiv.appendChild(showVideo);*/
+
+    
+    //show photographers photo
+    const photographerPhoto = document.createElement('div');
+    photographerPhoto.setAttribute("class", "photographer-photo-display");
+    photographerInfoDisp.appendChild(photographerPhoto);
+
+    const photoPhoto = document.createElement('img');
+    photoPhoto.src = "SamplePhotos/Photographers ID Photos/" + photographer.name.replace(/\s+/g, '') + ".jpg";
+    photographerPhoto.appendChild(photoPhoto);
+
+
 };
 
 window.onload = async() =>{
-    const   u = new URLSearchParams(window.location.search);
-    const   id = u.get("id");
+    const   params = new URLSearchParams(window.location.search);
+    const   id = params.get("id");
     const data = await getData();
     const photographer = data.photographers.find(item => item.id == id);
-    const mediaE = data.media.filter(item => item.photographerId == id);
-//    console.log(mediaE);
-    displayMedia(photographer, mediaE);
+    const medias = data.media.filter(item => item.photographerId == id);
+//    console.log(medias);
+    displayMedia(photographer, medias);
 };

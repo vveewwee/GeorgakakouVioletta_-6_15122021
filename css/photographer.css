@@ -10,10 +10,44 @@ body {
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
+    width: 94%;
+    margin: 0 30px;
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.photograph-header-name{
+    width:30%;
+}
+
+.photograph-header-name h1{
+    color:#DB8876;
+}
+
+.photograph-header-name h4{
+    color: black;
+}
+
+.photograph-header-name h4:nth-child(2){
+    color:#901C1C;
+}
+
+.photographer-photo-display{
+    width:30%;
+}
+
+.photographer-photo-display img{
+    width:73%;
+    height:220px;
+    border-radius:250px;
+    object-fit: cover;
 }
 
 .contact_button {
+    position:absolute;
+    left:40%;
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -40,6 +74,7 @@ body {
     display: flex;
     flex-flow: column nowrap;
 }
+
 .photographe-legende{
     display: flex;
     flex-flow: row nowrap;
@@ -47,6 +82,7 @@ body {
     align-items:center;
     color:#901C1C;
 }
+
 .photograph-div h5{
     font-size:14pt;
     font-weight: 200;
@@ -58,9 +94,12 @@ body {
 }
 
 .modal {
+    position: absolute;
+    top: 20%;
+    left:20%;
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
