@@ -71,7 +71,11 @@ const displayMedia = (photographer, medias) =>{
     photoPhoto.src = "SamplePhotos/Photographers ID Photos/" + photographer.name.replace(/\s+/g, '') + ".jpg";
     photographerPhoto.appendChild(photoPhoto);
 
-
+    /* -------fix this -------*/
+    const modalNameDisplay = document.querySelector('.modal');
+    const nameInfo = document.createElement('h3');
+    nameInfo.innerText = photographer.name;
+    modalNameDisplay.appendChild(nameInfo);
 };
 
 window.onload = async() =>{
