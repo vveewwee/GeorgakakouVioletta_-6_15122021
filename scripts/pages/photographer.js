@@ -5,6 +5,13 @@ const getData = async () =>{
     return (data);
 };
 
+const lightbox = document.querySelector('.lightbox');
+
+function openLightbox(imagePhoto){
+    lightbox.style.display = "block";
+
+}
+
 const displayMedia = (photographer, medias) =>{
     const photoDisplayArticle = document.createElement ('article');
             photoDisplayArticle.setAttribute("class", "photograph-display");
@@ -21,6 +28,8 @@ const displayMedia = (photographer, medias) =>{
             const imagePhoto = photographerMedia.image;
             photos.src ="SamplePhotos/"+ photographer.name +"/" + imagePhoto;
             photoDisplayDiv.append(photos);
+
+            photos.addEventListener("onclick", openLightbox(imagePhoto));
 
             const legende = document.createElement('div');
             legende.setAttribute("class", "photographe-legende");
@@ -77,6 +86,19 @@ const displayMedia = (photographer, medias) =>{
     nameInfo.innerText = photographer.name;
     modalNameDisplay.appendChild(nameInfo);
 };
+
+function closeLightbox(){
+    lightbox.style.display = "none";
+}
+
+const createLightbox = async() =>{
+    const lightboxClose = document.querySelector('.close').addEventListener("onclick", closeLightbox());
+    const lightboxNext = document.querySelector('.next');
+    const lightboxPrevious = document.querySelector('.previous');
+    const lightboxImageHolder = document.querySelector('.previewImage');
+    const lightboxVideoHolder = document.querySelector('.previewVideo');
+
+}
 
 window.onload = async() =>{
     const   params = new URLSearchParams(window.location.search);
