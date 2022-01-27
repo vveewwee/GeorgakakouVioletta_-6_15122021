@@ -129,6 +129,9 @@ body {
     text-align: center;
 }
 
+.modal h3{
+    position:relative;
+}
 form {
     display: flex;
     width: 100%;
@@ -197,4 +200,14 @@ form input {
     font-size:30pt;
     background: #FFFFFF;
 
+}
+
+.previewImage{
+    width:80%;
+    height:auto;
+}
+
+.previewVideo{
+    width:80%;
+    height:auto;
 }

@@ -5,11 +5,15 @@ const getData = async () =>{
     return (data);
 };
 
+const imageArray = [];
+const imageTitles = [];
+
 const displayMedia = (photographer, medias) =>{
     const photoDisplayArticle = document.createElement ('article');
             photoDisplayArticle.setAttribute("class", "photograph-display");
             const main = document.querySelector("#main");
-            main.appendChild(photoDisplayArticle);
+            main.appendChild(photoDisplayArticle);           
+            let i = 0;
 
     medias.forEach((photographerMedia) => {
             const photoDisplayDiv = document.createElement('div');
@@ -31,8 +35,8 @@ const displayMedia = (photographer, medias) =>{
                 showVideo.setAttribute("controls","controls");
                 photoDisplayDiv.appendChild(showVideo);
             }
-            photos.onclick = openLightbox();
-            showVideo.onclick = openLightbox();
+            photos.onclick = openLightbox;
+            showVideo.onclick = openLightbox;
 
             const legende = document.createElement('div');
             legende.setAttribute("class", "photographe-legende");
@@ -50,6 +54,9 @@ const displayMedia = (photographer, medias) =>{
             iconHeart.classList.add('fas','fa-heart', 'heartIcon');
             likes.appendChild(iconHeart);
 
+            imageArray[i] = imagePhoto || videoPhoto;
+            imageTitles[i] = photographerMedia.title;
+            i++;
     });
     //show photographers info
     const   photographerInfoDisp = document.querySelector(".photograph-header");
@@ -68,9 +75,6 @@ const displayMedia = (photographer, medias) =>{
     taglineShow.innerText = photographer.tagline;
     showNameDiv.appendChild(taglineShow);
 
-/*   */
-
-    
     //show photographers photo
     const photographerPhoto = document.createElement('div');
     photographerPhoto.setAttribute("class", "photographer-photo-display");
@@ -81,31 +85,31 @@ const displayMedia = (photographer, medias) =>{
     photographerPhoto.appendChild(photoPhoto);
 
     /* -------fix this -------*/
-    const modalNameDisplay = document.querySelector('.modal');
+    const modalNameDisplay = document.querySelector('div[class="modal"] h2');
     const nameInfo = document.createElement('h3');
     nameInfo.innerText = photographer.name;
     modalNameDisplay.appendChild(nameInfo);
 };
 
-/*----- LoghtBox ----*/
+/*----- LightBox ----*/
 const lightbox = document.querySelector('.lightbox');
 
 function openLightbox(){
     lightbox.style.display = "block";
-    createLightbox();
 }
 
 function closeLightbox(){
     lightbox.style.display = "none";
 }
-
-const createLightbox = async() =>{
+console.log(imageTitles, imageArray);
+const createLightbox = async () => {
     const lightboxClose = document.querySelector('.close').addEventListener("onclick", closeLightbox());
     const lightboxNext = document.querySelector('.next');
     const lightboxPrevious = document.querySelector('.previous');
     const lightboxImageHolder = document.querySelector('.previewImage');
     const lightboxVideoHolder = document.querySelector('.previewVideo');
-}
+
+};
 
 /*----- fetch corresponding id -----*/
 
