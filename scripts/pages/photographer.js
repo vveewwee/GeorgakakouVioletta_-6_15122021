@@ -7,7 +7,7 @@ const getData = async () =>{
 
 const lightbox = document.querySelector('.lightbox');
 
-function openLightbox(imagePhoto){
+function openLightbox(){
     lightbox.style.display = "block";
 
 }
@@ -29,7 +29,8 @@ const displayMedia = (photographer, medias) =>{
             photos.src ="SamplePhotos/"+ photographer.name +"/" + imagePhoto;
             photoDisplayDiv.append(photos);
 
-            photos.addEventListener("onclick", openLightbox(imagePhoto));
+         //   photos.addEventListener("onclick", openLightbox);
+            photos.onclick = openLightbox;
 
             const legende = document.createElement('div');
             legende.setAttribute("class", "photographe-legende");

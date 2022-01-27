@@ -35,15 +35,15 @@
 				<form name="fillIn">
 					<div>
 						<label for="prenom">Prénom</label>
-						<input id="prenom"/>
+						<input id="prenom" name="prenom"/>
             <label for="nom">Nom</label>
-            <input id="nom"/>
+            <input id="nom" name="nom"/>
             <label for="email">Email</label>
-            <input id="email"/>
+            <input id="email" name="email" type="email"/>
             <label fo="message" type="text">Votre message</label>
-            <input id="message"/>
+            <input id="message" name="message"/>
 					</div>
-          <button class="contact_button" type="submit">Envoyer</button>
+          <button class="contact_button" type="button" onclick="submitModal()">Envoyer</button>
 				</form>
 			</div>
 		</div>

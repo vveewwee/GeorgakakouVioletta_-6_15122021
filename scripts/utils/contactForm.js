@@ -1,7 +1,7 @@
-let form = null;
+/*let form = null;
 window.onload = function (){
     form = document.forms["fillIn"];
-  }
+  }*/
 
 function displayModal() {
     const modal = document.getElementById("contact_modal");
@@ -30,3 +30,12 @@ class Client{
 };
 
 let newClient = new Client(prenom, nom, email,message);
+//form.prenom.value 
+
+
+function submitModal(){
+    const form = document.forms["fillIn"];
+    form.reset();
+    closeModal();
+    //TODO afficher un msg
+}
