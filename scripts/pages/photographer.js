@@ -5,13 +5,6 @@ const getData = async () =>{
     return (data);
 };
 
-const lightbox = document.querySelector('.lightbox');
-
-function openLightbox(){
-    lightbox.style.display = "block";
-
-}
-
 const displayMedia = (photographer, medias) =>{
     const photoDisplayArticle = document.createElement ('article');
             photoDisplayArticle.setAttribute("class", "photograph-display");
@@ -26,11 +19,20 @@ const displayMedia = (photographer, medias) =>{
             const photos = document.createElement('img');
             photos.setAttribute("class", "photograph-img");
             const imagePhoto = photographerMedia.image;
+            const showVideo = document.createElement('video');
+            showVideo.setAttribute("class", "photograph-video")
             photos.src ="SamplePhotos/"+ photographer.name +"/" + imagePhoto;
-            photoDisplayDiv.append(photos);
-
-         //   photos.addEventListener("onclick", openLightbox);
-            photos.onclick = openLightbox;
+            if (photos.src.endsWith("jpg")){
+                photoDisplayDiv.append(photos);
+            }
+            const videoPhoto = photographerMedia.video;
+            showVideo.src = "SamplePhotos/"+ photographer.name +"/" + videoPhoto;
+            if (showVideo.src.endsWith("mp4")){
+                showVideo.setAttribute("controls","controls");
+                photoDisplayDiv.appendChild(showVideo);
+            }
+            photos.onclick = openLightbox();
+            showVideo.onclick = openLightbox();
 
             const legende = document.createElement('div');
             legende.setAttribute("class", "photographe-legende");
@@ -66,10 +68,7 @@ const displayMedia = (photographer, medias) =>{
     taglineShow.innerText = photographer.tagline;
     showNameDiv.appendChild(taglineShow);
 
-/*    const showVideo = document.createElement('video');
-    showVideo.src = photographer.video;
-    showVideo.setAttribute("controls");
-    photoDisplayDiv.appendChild(showVideo);*/
+/*   */
 
     
     //show photographers photo
@@ -88,6 +87,14 @@ const displayMedia = (photographer, medias) =>{
     modalNameDisplay.appendChild(nameInfo);
 };
 
+/*----- LoghtBox ----*/
+const lightbox = document.querySelector('.lightbox');
+
+function openLightbox(){
+    lightbox.style.display = "block";
+    createLightbox();
+}
+
 function closeLightbox(){
     lightbox.style.display = "none";
 }
@@ -98,8 +105,9 @@ const createLightbox = async() =>{
     const lightboxPrevious = document.querySelector('.previous');
     const lightboxImageHolder = document.querySelector('.previewImage');
     const lightboxVideoHolder = document.querySelector('.previewVideo');
-
 }
+
+/*----- fetch corresponding id -----*/
 
 window.onload = async() =>{
     const   params = new URLSearchParams(window.location.search);
@@ -109,4 +117,5 @@ window.onload = async() =>{
     const medias = data.media.filter(item => item.photographerId == id);
 //    console.log(medias);
     displayMedia(photographer, medias);
+//    createLightbox(medias);
 };
