@@ -24,7 +24,7 @@ const displayMedia = (photographer, medias) =>{
             photos.setAttribute("class", "photograph-img");
             const imagePhoto = photographerMedia.image;
             const showVideo = document.createElement('video');
-            showVideo.setAttribute("class", "photograph-video")
+            showVideo.setAttribute("class", "photograph-img")
             photos.src ="SamplePhotos/"+ photographer.name +"/" + imagePhoto;
             if (photos.src.endsWith("jpg")){
                 photoDisplayDiv.append(photos);
@@ -54,10 +54,13 @@ const displayMedia = (photographer, medias) =>{
             iconHeart.classList.add('fas','fa-heart', 'heartIcon');
             likes.appendChild(iconHeart);
 
-            imageArray[i] = imagePhoto || videoPhoto;
+            imageArray[i] = "SamplePhotos/"+ photographer.name +"/" + imagePhoto;
             imageTitles[i] = photographerMedia.title;
             i++;
+
     });
+
+    createLightbox(imageArray, imageTitles);
     //show photographers info
     const   photographerInfoDisp = document.querySelector(".photograph-header");
     const   showNameDiv = document.createElement('div');
@@ -101,13 +104,28 @@ function openLightbox(){
 function closeLightbox(){
     lightbox.style.display = "none";
 }
-console.log(imageTitles, imageArray);
-const createLightbox = async () => {
+console.log(imageArray);
+function createLightbox(imageArray, imageTitles){
     const lightboxClose = document.querySelector('.close').addEventListener("onclick", closeLightbox());
     const lightboxNext = document.querySelector('.next');
     const lightboxPrevious = document.querySelector('.previous');
-    const lightboxImageHolder = document.querySelector('.previewImage');
+//  const lightboxImageHolder = document.querySelector('.previewImage');
     const lightboxVideoHolder = document.querySelector('.previewVideo');
+    const lightboxImg = document.createElement('img');
+    lightboxImg.setAttribute("class", "previewImage");
+    lightbox.appendChild(lightboxImg);
+
+    let index = 0;
+    console.log(imageArray[index]);
+    lightboxImg.src = imageArray[index];
+    if (index <= imageArray.length){
+        lightboxNext.addEventListener("onclick", function(){
+            index++;
+        });
+        lightboxPrevious.addEventListener("onclick", function(){
+            index--;
+        });
+    }
 
 };
 

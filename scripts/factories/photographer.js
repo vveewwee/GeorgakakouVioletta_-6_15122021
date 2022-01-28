@@ -30,17 +30,3 @@ function photographerFactory(data) {
     }
     return { name, picture, getUserCardDOM }
 }
-/*
-function photographerMediaFactory(photoInfo) {
-    const photoDisplayDiv = document.querySelector(".photograph-display");
-    const photos = document.createElement('img');
-    photos.setAttribute("class", "photodisplay");
-    const imagePhoto = photoInfo.image;
-    photos.setAttribute("src", imagePhoto);
-    photoDisplayDiv.appendChild(photos);
-
-};
-
-function createMediaFactory(identity){
-    return(identity);
-}*/
