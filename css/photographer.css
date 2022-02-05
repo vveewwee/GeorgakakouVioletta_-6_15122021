@@ -41,7 +41,7 @@ body {
 .photographer-photo-display img{
     width:73%;
     height:220px;
-    border-radius:250px;
+    border-radius:50%;
     object-fit: cover;
 }
 

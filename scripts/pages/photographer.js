@@ -32,7 +32,7 @@ const displayMedia = (photographer, medias) =>{
             const videoPhoto = photographerMedia.video;
             showVideo.src = "SamplePhotos/"+ photographer.name +"/" + videoPhoto;
             if (showVideo.src.endsWith("mp4")){
-                showVideo.setAttribute("controls","controls");
+                //showVideo.setAttribute("controls","controls");
                 photoDisplayDiv.appendChild(showVideo);
             }
             photos.onclick = openLightbox;
@@ -60,7 +60,7 @@ const displayMedia = (photographer, medias) =>{
 
     });
 
-    createLightbox(imageArray, imageTitles);
+    //createLightbox(imageArray, imageTitles);
     //show photographers info
     const   photographerInfoDisp = document.querySelector(".photograph-header");
     const   showNameDiv = document.createElement('div');
@@ -105,7 +105,7 @@ function closeLightbox(){
     lightbox.style.display = "none";
 }
 console.log(imageArray);
-function createLightbox(imageArray, imageTitles){
+function createLightbox(){
     const lightboxClose = document.querySelector('.close').addEventListener("onclick", closeLightbox());
     const lightboxNext = document.querySelector('.next');
     const lightboxPrevious = document.querySelector('.previous');
@@ -138,6 +138,7 @@ window.onload = async() =>{
     const photographer = data.photographers.find(item => item.id == id);
     const medias = data.media.filter(item => item.photographerId == id);
 //    console.log(medias);
+//    debugger;
     displayMedia(photographer, medias);
-//    createLightbox(medias);
+    createLightbox();
 };
