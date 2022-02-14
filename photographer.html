@@ -19,12 +19,14 @@
         <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
       </div>
     </main>
-    <div class="lightbox">
-      <button class="previous"><i class="fas fa-angle-left"></i></button>
-      <button class="next"><i class="fas fa-angle-right"></i></button>
+    <div id="lightbox" class="lightbox">
       <button class="close" onclick="closeLightbox()"><i class="fas fa-times"></i></button>
-    
-      <video class="previewVideo"></video>
+      <div class="mediaC">
+        <button id= "previous" class="previous" onclick="lbLeft()"><i class="fas fa-angle-left"></i></button>
+        <div id="lbMedia" class="media"></div>
+        <button id="next" class="next" onclick="lbRight()"><i class="fas fa-angle-right"></i></button>
+      </div>
+      <div class="mediaInfo"></div>
     </div>
     <div id="contact_modal">
 			<div class="modal">

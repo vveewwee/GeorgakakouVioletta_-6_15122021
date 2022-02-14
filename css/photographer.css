@@ -36,6 +36,7 @@ body {
 
 .photographer-photo-display{
     width:30%;
+    height: 80%;
 }
 
 .photographer-photo-display img{
@@ -200,6 +201,22 @@ form input {
     color:#DB8876;
     font-size:30pt;
     background: #FFFFFF;
+
+}
+
+.mediaC{
+    width:100%;
+    height:auto;
+    display: flex;
+    flex-flow: column-reverse;
+    justify-content: center;
+}
+
+.lbMedia{
+    width:
+}
+.mediaMedia{
+    width:60%;
 
 }
 
