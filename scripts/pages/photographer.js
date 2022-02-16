@@ -5,6 +5,8 @@ const getData = async () =>{
     return (data);
 };
 
+let sumLikes = 0;
+
 const displayMedia = () =>{
     const photoDisplayArticle = document.createElement ('article');
             photoDisplayArticle.setAttribute("class", "photograph-display");
@@ -51,7 +53,7 @@ const displayMedia = () =>{
             const iconHeart = document.createElement('i');
             iconHeart.classList.add('fas','fa-heart', 'heartIcon');
             likes.appendChild(iconHeart);
-
+            sumLikes += photographerMedia.likes;
         //    imageArray[i] = "SamplePhotos/"+ photographer.name +"/" + imagePhoto;
         //    imageTitles[i] = photographerMedia.title;
         //    i++
@@ -162,6 +164,32 @@ function updateLB(){
     c.appendChild(p);
     c.appendChild(m);
 }
+
+function createLikesDiv(){
+    const likesDiv = document.createElement("div");
+    likesDiv.className = "likesDiv";
+    
+    const likesP = document.createElement("p");
+    likesP.className = "likesP";
+    likesP.innerHTML = sumLikes;
+    
+    const priceP = document.createElement("p");
+    priceP.className = "priceP";
+    priceP.innerHTML = photographer.price + "€/hour";
+    
+    const heartLikes = document.createElement("i");
+    heartLikes.className = "fas fa-heart heartIcon";
+
+    
+    likesDiv.appendChild(likesP);
+    likesP.appendChild(heartLikes);
+    likesDiv.appendChild(priceP);
+
+    const main = document.getElementById("main");
+    main.appendChild(likesDiv);
+
+
+}
 /*----- fetch corresponding id -----*/
 let medias = [];
 let photographer = null;
@@ -175,4 +203,5 @@ window.onload = async() =>{
 //    console.log(medias);
 //    debugger;
     displayMedia();
+    createLikesDiv();
 };
