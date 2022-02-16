@@ -35,12 +35,14 @@ body {
 }
 
 .photographer-photo-display{
-    width:30%;
+    width:25%;
+    max-width: 233px;
     height: 80%;
+    margin-right: 5%;
 }
 
 .photographer-photo-display img{
-    width:73%;
+    width:100%;
     height:220px;
     border-radius:50%;
     object-fit: cover;
@@ -60,7 +62,28 @@ body {
     border-radius: 5px;
     cursor: pointer;
 }
+button.contact_button:hover{
+    background-color: #DB8876;
+}
 
+.contact_button_send{
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    padding: 11px;
+    width: 170px;
+    height: 70px;
+    border: none;
+    background-color: #901C1C;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.contact_button_send:hover{
+    background-color: #DB8876;
+}
 .photograph-display{
     display: flex;
     flex-flow: row wrap;
