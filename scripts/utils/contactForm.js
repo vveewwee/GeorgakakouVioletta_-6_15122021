@@ -13,12 +13,16 @@ function closeModal() {
     modal.style.display = "none";
 }
 
-//retrieve clien info, save them in an array
+//retrieve client info, save them in an array
 
-const   prenom = document.querySelector("#prenom").setAttribute('aria-labelledby','prenom');
-const   nom = document.querySelector("#nom").setAttribute('aria-labelledby','nom');
-const   email = document.querySelector("#email").setAttribute('aria-labelledby','email');
-const   message = document.querySelector("#message").setAttribute('aria-labelledby','message');
+const   prenom = document.querySelector("#prenom");
+prenom.setAttribute('aria-labelledby','prenom');
+const   nom = document.querySelector("#nom");
+nom.setAttribute('aria-labelledby','nom');
+const   email = document.querySelector("#email");
+email.setAttribute('aria-labelledby','email');
+const   message = document.querySelector("#message");
+message.setAttribute('aria-labelledby','message');
 
 class Client{
     constructor(name, lastname, mail, text){
@@ -32,9 +36,12 @@ class Client{
 let newClient = new Client(prenom, nom, email,message);
 //form.prenom.value 
 
-
 function submitModal(){
     const form = document.forms["fillIn"];
+    console.log(prenom.value);
+    console.log(nom.value);
+    console.log(email.value);
+    console.log(message.value);
     form.reset();
     closeModal();
     //TODO afficher un msg

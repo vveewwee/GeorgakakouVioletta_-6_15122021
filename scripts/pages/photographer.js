@@ -13,22 +13,23 @@ const displayMedia = () => {
     const main = document.querySelector("#main");
     main.appendChild(photoDisplayArticle);
 
-    let optionValue = dropdown.addEventListener("change", () => getOption());
     sortByTitle();
-    if (optionValue != "title"){
-        getOption();
-    }
+//    if (optionValue != "title"){
+//        getOption();
+//    }
+    
     medias.forEach((photographerMedia, index) => {
         const photoDisplayDiv = document.createElement('div');
         photoDisplayDiv.setAttribute("class", "photograph-div");
         photoDisplayArticle.appendChild(photoDisplayDiv);
-        console.log(photographerMedia.date);
-        console.log(photographerMedia.likes);
-        console.log(photographerMedia.title);
+//        console.log(photographerMedia.date);
+//        console.log(photographerMedia.likes);
+//        console.log(photographerMedia.title);
         if (photographerMedia.image) {
             const imagePhoto = photographerMedia.image;
             const photos = document.createElement('img');
             photos.className = "photograph-img";
+            photos.setAttribute("alt", photographerMedia.title);
             photos.src = "SamplePhotos/" + photographer.name + "/" + imagePhoto;
             photoDisplayDiv.append(photos);
             photos.onclick = function () {
@@ -58,10 +59,16 @@ const displayMedia = () => {
 
         const iconHeart = document.createElement('i');
         iconHeart.classList.add('fas', 'fa-heart', 'heartIcon');
+        let addLike = photographerMedia.likes;
+        console.log(addLike);
+    //    iconHeart.addEventListener("onlick", function(){
+    //        addLike.value += 1;
+    //    })
         likes.appendChild(iconHeart);
         sumLikes += photographerMedia.likes;
     });
 
+    let optionValue = dropdown.addEventListener("change", () => getOption());
     //show photographers info
     const photographerInfoDisp = document.querySelector(".photograph-header");
     const showNameDiv = document.createElement('div');
@@ -85,6 +92,7 @@ const displayMedia = () => {
     photographerInfoDisp.appendChild(photographerPhoto);
 
     const photoPhoto = document.createElement('img');
+    photoPhoto.setAttribute("alt", photographer.name);
     photoPhoto.src = "SamplePhotos/Photographers ID Photos/" + photographer.portrait;
     photographerPhoto.appendChild(photoPhoto);
 
@@ -163,6 +171,7 @@ function openLightbox(photographer, medias, index) {
     //  console.log(p);
     if (media.image) {
         m = document.createElement("img");
+        m.setAttribute("alt", media.title);
         m.className = "mediaMedia";
         m.src = "SamplePhotos/" + photographer.name + "/" + media.image;
 
@@ -253,9 +262,6 @@ function createLikesDiv() {
 let medias = [];
 let photographer = null;
 let lightboxIndex = 0;
-let popArray = [];
-let dateArray = [];
-let titreArray = [];
 
 window.onload = async () => {
     const params = new URLSearchParams(window.location.search);
@@ -263,28 +269,7 @@ window.onload = async () => {
     const data = await getData();
     photographer = data.photographers.find(item => item.id == id);
     medias = data.media.filter(item => item.photographerId == id);
-    /*    
-    //  create array sorted by popularity    
-        popArray = data.media.map((media) => media.likes);
-        popArray.sort((a,b) => {
-            return a - b;
-        });
-    
-    //  create array sorted by date    
-        dateArray = data.media.map((media) => media.date);
-        dateArray.sort((a,b)=>{
-            return new Date(a) - new Date (b);
-        });
-    //  create array sorted by title
-        titreArray = data.media.map((media) => media.title);
-        titreArray.sort((a,b) =>{
-            if (a > b)
-                return 1;
-            else
-                return -1;
-        });
-    */
-    //  debugger;
+//  debugger;
     displayMedia();
     createLikesDiv();
 };

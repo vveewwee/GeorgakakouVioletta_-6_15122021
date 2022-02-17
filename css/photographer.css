@@ -288,11 +288,12 @@ form input {
     width:100%;
     height:auto;
     display: flex;
-    flex-flow: column-reverse;
+    flex-flow: row nowrap;
     justify-content: center;
 }
 
 #lbMedia{
+    width:100%;
     display: flex;
     flex-flow: column-reverse;
     justify-content: center;
@@ -301,11 +302,13 @@ form input {
 #lbMedia p{
     color:#901C1C;
     font-size: 12pt;
-    position:relative;
-    left:-27%;
+/*    position:relative;
+    left:-27%;*/
 }
+
 .mediaMedia{
-    width:60%;
+    width:45%;
+    max-width:760px;
 }
 
 .previewImage{

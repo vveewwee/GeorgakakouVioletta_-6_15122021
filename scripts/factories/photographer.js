@@ -8,6 +8,7 @@ function photographerFactory(data) {
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
         const img = document.createElement( 'img' );
+        img.setAttribute("alt", name);
         img.src ="SamplePhotos/Photographers ID Photos/" + picture;
         const link = document.createElement('a');
         link.href= "/photographer.html?id=" + id;
