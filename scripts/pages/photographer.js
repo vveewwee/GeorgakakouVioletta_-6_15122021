@@ -12,15 +12,15 @@ const displayMedia = () => {
     photoDisplayArticle.setAttribute("class", "photograph-display");
     const main = document.querySelector("#main");
     main.appendChild(photoDisplayArticle);
+
     sortByTitle();
+
     medias.forEach((photographerMedia, index) => {
         const photoDisplayDiv = document.createElement('div');
         photoDisplayDiv.setAttribute("class", "photograph-div");
         photoDisplayDiv.setAttribute('aria-labelledby','photograph div');
         photoDisplayArticle.appendChild(photoDisplayDiv);
-//        console.log(photographerMedia.date);
-//        console.log(photographerMedia.likes);
-//        console.log(photographerMedia.title);
+
         if (photographerMedia.image) {
             const imagePhoto = photographerMedia.image;
             const photos = document.createElement('img');
@@ -59,28 +59,17 @@ const displayMedia = () => {
 
         const iconHeart = document.createElement('button');
         iconHeart.setAttribute('aria-labelledby','like button');
-        iconHeart.addEventListener("onclick", function(){
+        iconHeart.onclick = function(){
             console.log("clicked button");
-            iconHeart.childNodes = removeChild;
-            iconHeart.innerText = photographerMedia.likes + 1;
-        })
+            likes.innerText = "";
+            photographerMedia.likes += 1;
+            sumLikes += 1;
+            likes.innerText = photographerMedia.likes;
+        }
         iconHeart.classList.add('fas', 'fa-heart', 'heartIcon');
-    //    let addLike = photographerMedia.likes;
-    //    console.log(addLike);
-    //    iconHeart.addEventListener("onlick", function(){
-    //        addLike.value += 1;
-    //    })
-        likes.appendChild(iconHeart);
+        legende.appendChild(iconHeart);
         sumLikes += photographerMedia.likes;
     });
-   
-    function addLikes(likes){
-        let likeIcon = document.getElementsByClassName("pLikes");
-        let newLike = likes + 1;
-        console.log(newLike);
-        likeIcon.innerText = "";
-        likeIcon.innerText = newLike;
-    }
 
     //show photographers info
     const photographerInfoDisp = document.querySelector(".photograph-header");
@@ -118,19 +107,6 @@ const displayMedia = () => {
 
 /*------ Filters ------*/
 let dropdown = document.getElementById("dropdown");
-/*
-function getOption(medias){
-    const optionValue = dropdown.options[dropdown.selectedIndex].innerHTML;
-    console.log(optionValue);
-    if (optionValue == "titre"){
-        return titreArray;
-    }
-    else if (optionValue == "pop"){
-        return popArray;
-    }
-    else
-        return dateArray;
-}*/
 const optionValue = dropdown.options[dropdown.selectedIndex].innerHTML;
 dropdown.addEventListener("change", () => getOption());
 
