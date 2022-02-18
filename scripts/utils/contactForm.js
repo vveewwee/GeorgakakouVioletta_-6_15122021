@@ -44,5 +44,4 @@ function submitModal(){
     console.log(message.value);
     form.reset();
     closeModal();
-    //TODO afficher un msg
 }

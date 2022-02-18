@@ -55,7 +55,15 @@ body {
     border-radius:50%;
     object-fit: cover;
 }
+.heartIcon{
+    border-style: none;
+    color: #901C1C;
+    background-color: #ffffff00;
+}
 
+.heartI{
+    color: black;
+}
 .contact_button {
     position:absolute;
     left:40%;
