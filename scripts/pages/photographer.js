@@ -12,31 +12,34 @@ const displayMedia = () => {
     photoDisplayArticle.setAttribute("class", "photograph-display");
     const main = document.querySelector("#main");
     main.appendChild(photoDisplayArticle);
+
     let dropdown = document.getElementById("dropdown");
-    const optionValue = dropdown.options[dropdown.selectedIndex].innerHTML;
-/*    dropdown.addEventListener("change", () => getOption());
+    const optionValue = dropdown.options[dropdown.selectedIndex].value;
+    dropdown.addEventListener("change", () => getOption());
+
     function getOption() {
-        while (photoDisplayArticle.childNodes.length > 0) {
-            photoDisplayArticle.removeChild(photoDisplayArticle.childNodes[0]);
-        }
+        photoDisplayArticle.innerHTML = "";
         console.log(optionValue);
-        if (optionValue == "titre") {
+        switch (optionValue){
+        case  "titre": {
             console.log("option value = titre");
             sortByTitle();
-            displayMedia();
-            return;
-        } else if (optionValue == "date") {
+            break;
+        }
+        case "date" : {
             console.log("option value = date");
             sortByDate();
-            displayMedia();
-            return;
-        } else {
-            console.log("option value = pop");
-            sortByPop();
-            displayMedia();
-            return;
+            break;
         }
-    }*/
+        case "pop" : {
+            console.log("option value = pop");
+            sortByPop();  
+            break;
+        }}
+        displayMedia();
+        return;
+    }
+    
     medias.forEach((photographerMedia, index) => {
         const photoDisplayDiv = document.createElement('div');
         photoDisplayDiv.setAttribute("class", "photograph-div");
@@ -69,7 +72,7 @@ const displayMedia = () => {
         photoDisplayDiv.appendChild(legende);
 
         const titlePhoto = document.createElement('h5');
-        titlePhoto.innerText = photographerMedia.title;
+        titlePhoto.innerText = photographerMedia.title + "," + photographerMedia.date;
         titlePhoto.setAttribute('aria-labelledby', 'title');
         legende.appendChild(titlePhoto);
 
@@ -87,6 +90,7 @@ const displayMedia = () => {
             photographerMedia.likes += 1;
             sumLikes += 1;
             likes.innerText = photographerMedia.likes;
+            likesP.innerText = sumLikes; 
         }
         iconHeart.classList.add('fas', 'fa-heart', 'heartIcon');
         legende.appendChild(iconHeart);
@@ -132,24 +136,25 @@ const displayMedia = () => {
 function sortByPop() {
     medias.sort((a, b) => {
         console.log("sortByPop");
-        return a.title - b.title;
+        return a.likes - b.likes;
     });
 }
 
 function sortByDate() {
     medias.sort((a, b) => {
-        console.log("sortByDate");
-        return new Date(a.date) - new Date(b.date);
+        console.log(Date.parse(a.date) - Date.parse(b.date));
+        return Date.parse(a.date) - Date.parse(b.date);
     });
 }
 
-function sortByTitle(e) {
+function sortByTitle() {
     medias.sort((a, b) => {
         console.log("sortByTitle");
         if (a.title > b.title)
             return 1;
-        else
+        if (a.title < b.title)
             return -1;
+        return 0;
     });
 }
 
@@ -243,12 +248,12 @@ function updateLB() {
 }
 
 /*-------- Likes/Price sticky div -----*/
-
+let likesP = null;
 function createLikesDiv() {
     const likesDiv = document.createElement("div");
     likesDiv.className = "likesDiv";
 
-    const likesP = document.createElement("p");
+    likesP = document.createElement("p");
     likesP.className = "likesP";
     likesP.setAttribute('aria-labelledby', sumLikes + " likes");
     likesP.innerHTML = sumLikes;
