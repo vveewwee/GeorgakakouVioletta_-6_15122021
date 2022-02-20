@@ -73,7 +73,7 @@ const displayMedia = () => {
         photoDisplayDiv.appendChild(legende);
 
         const titlePhoto = document.createElement('h5');
-        titlePhoto.innerText = photographerMedia.title + "," + photographerMedia.date;
+        titlePhoto.innerText = photographerMedia.title;
         titlePhoto.setAttribute('aria-labelledby', 'title');
         legende.appendChild(titlePhoto);
 
@@ -190,18 +190,23 @@ function openLightbox(photographer, medias, index) {
     lbm.appendChild(p);
     lbm.appendChild(m);
     lightbox.style.display = "flex";
+//    document.getElementById("previous").focus();
+    islightbox = true;
 }
 
 function closeLightbox() {
     lightbox.style.display = "none";
+    islightbox = false;
     const lbm = document.getElementById("lbMedia");
     while (lbm.childNodes.length > 0) {
         lbm.removeChild(lbm.childNodes[0]);
     }
 }
-
+let islightbox = false;
 // keyboard control of lightbox <- esc ->
-lightbox.addEventListener("keydown", function (e) {
+document.body.addEventListener("keydown", function (e) {
+    if(!islightbox)
+        return;
     console.log(e.key);
     switch (e.key) {
         case 'ArrowLeft': lbLeft();
@@ -248,32 +253,20 @@ function updateLB() {
     c.appendChild(m);
 }
 
+
+
 /*-------- Likes/Price sticky div -----*/
 let likesP = null;
 function createLikesDiv() {
-    const likesDiv = document.createElement("div");
-    likesDiv.className = "likesDiv";
+    const likesDiv = document.getElementById("likesDiv");
 
-    likesP = document.createElement("p");
-    likesP.className = "likesP";
+    likesP = likesDiv.children[0];
     likesP.setAttribute('aria-labelledby', sumLikes + " likes");
     likesP.innerHTML = sumLikes;
 
-    const priceP = document.createElement("p");
-    priceP.className = "priceP";
+    const priceP = likesDiv.children[2];
     priceP.setAttribute('aria-labelledby', photographer.price + "€/hour");
-    priceP.innerHTML = photographer.price + "€/hour";
-
-    const heartLikes = document.createElement("i");
-    heartLikes.className = "fas fa-heart heartI";
-
-
-    likesDiv.appendChild(likesP);
-    likesDiv.appendChild(heartLikes);
-    likesDiv.appendChild(priceP);
-
-    const main = document.getElementById("main");
-    document.body.appendChild(likesDiv);
+    priceP.innerHTML = photographer.price + "€/hour" 
 }
 
 /*----- fetch corresponding id / create data arrays -----*/

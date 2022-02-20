@@ -224,6 +224,12 @@ form input {
     width: 10rem;
     font-size: 12pt;
   }
+
+.dropdown_option{
+    background-color: #901c1c;
+    color: white;
+}
+
 .dropdown_div{
     margin-left: 3%;
 }
