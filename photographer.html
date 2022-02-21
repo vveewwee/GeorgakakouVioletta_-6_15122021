@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <link href="css/photographer.css" rel="stylesheet" type="text/css" />
@@ -13,7 +13,7 @@
 <body>
   <header>
     <a href="index.html">
-      <img src="assets/images/logo.png" class="logo" />
+      <img src="assets/images/logo.png" class="logo" alt="logo" />
     </a>
   </header>
   <main id="main">
@@ -21,7 +21,7 @@
       <button class="contact_button" onclick="displayModal()">Contactez-moi</button>
     </div>
     <div class="dropdown_div">
-      <span class="dropdownn_select">Trier par</span>
+      <label for="dropdown" class="dropdownn_select">Trier par</label>
       <select id="dropdown">
         <option class="dropdown_option" value="Titre">Titre</option>
         <option class="dropdown_option" value="Popularite">Popularite</option>
@@ -47,7 +47,7 @@
     <div class="modal">
       <header>
         <h2>Contactez-moi</h2>
-        <img src="assets/icons/close.svg" onclick="closeModal()" />
+        <img src="assets/icons/close.svg" onclick="closeModal()" alt="close" />
       </header>
       <form name="fillIn">
         <div>
@@ -57,7 +57,7 @@
           <input id="nom" name="nom" />
           <label for="email">Email</label>
           <input id="email" name="email" type="email" />
-          <label fo="message" type="text">Votre message</label>
+          <label for="message" type="text">Votre message</label>
           <input id="message" name="message" />
         </div>
         <button class="contact_button_send" type="button" onclick="submitModal()">Envoyer</button>
