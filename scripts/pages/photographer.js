@@ -87,12 +87,18 @@ const displayMedia = () => {
 
         const iconHeart = document.createElement("button");
         iconHeart.setAttribute("aria-labelledby", "like button");
+        let passed = true;
         iconHeart.onclick = function () {
-            likes.innerText = "";
-            photographerMedia.likes += 1;
-            sumLikes += 1;
-            likes.innerText = photographerMedia.likes;
-            likesP.innerText = sumLikes;
+            if (passed == true)
+            {
+                likes.innerText = "";
+                photographerMedia.likes += 1;
+                sumLikes += 1;
+                likes.innerText = photographerMedia.likes;
+                likesP.innerText = sumLikes;
+                passed = false;
+            }
+            return;
         };
         iconHeart.classList.add("fas", "fa-heart", "heartIcon");
         legende.appendChild(iconHeart);
