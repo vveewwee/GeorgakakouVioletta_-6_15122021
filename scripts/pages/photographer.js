@@ -4,11 +4,12 @@ const getData = async () => {
     const data = await response.json();
     return (data);
 };
+
 //create empty sum of likes
 let sumLikes = 0;
 const photoDisplayArticle = document.createElement("article");
 const displayMedia = () => {
- 
+
     photoDisplayArticle.setAttribute("class", "photograph-display");
     const main = document.querySelector("#main");
     main.appendChild(photoDisplayArticle);
@@ -20,27 +21,28 @@ const displayMedia = () => {
         const optionValue = dropdown.value;
         photoDisplayArticle.innerHTML = "";
         console.log(optionValue);
-        switch (optionValue){
-        case  "Titre": {
+        switch (optionValue) {
+        case "Titre": {
             console.log("option value = Titre: " + optionValue);
             sortByTitle();
             displayMedia();
             break;
         }
-        case "Popularite" : {
-            console.log("option value = pop: "+ optionValue);
+        case "Popularite": {
+            console.log("option value = pop: " + optionValue);
             sortByPop();
             displayMedia();
             break;
         }
-        case "Date" : {
-            console.log("option value = date: "+ optionValue);
+        case "Date": {
+            console.log("option value = date: " + optionValue);
             sortByDate();
             displayMedia();
             break;
-        }}
+        }
+        }
     }
-    
+
     medias.forEach((photographerMedia, index) => {
         const photoDisplayDiv = document.createElement("div");
         photoDisplayDiv.setAttribute("class", "photograph-div");
@@ -49,14 +51,14 @@ const displayMedia = () => {
 
         if (photographerMedia.image) {
             const imagePhoto = photographerMedia.image;
-            const photos = document.createElement('img');
+            const photos = document.createElement("img");
             photos.className = "photograph-img";
             photos.setAttribute("alt", photographerMedia.title);
             photos.src = "SamplePhotos/" + photographer.name + "/" + imagePhoto;
             photoDisplayDiv.append(photos);
             photos.onclick = function () {
                 openLightbox(photographer, medias, index);
-            }
+            };
         } else {
             const showVideo = document.createElement("video");
             showVideo.className = "photograph-img";
@@ -65,7 +67,7 @@ const displayMedia = () => {
             photoDisplayDiv.appendChild(showVideo);
             showVideo.onclick = function () {
                 openLightbox(photographer, medias, index);
-            }
+            };
         }
         const legende = document.createElement("div");
         legende.setAttribute("class", "photographe-legende");
@@ -73,7 +75,7 @@ const displayMedia = () => {
         photoDisplayDiv.appendChild(legende);
 
         const titlePhoto = document.createElement("h5");
-        titlePhoto.innerText = photographerMedia.title;
+        titlePhoto.innerText = photographerMedia.title + "," + photographerMedia.date;
         titlePhoto.setAttribute("aria-labelledby", "title");
         legende.appendChild(titlePhoto);
 
@@ -90,15 +92,15 @@ const displayMedia = () => {
             photographerMedia.likes += 1;
             sumLikes += 1;
             likes.innerText = photographerMedia.likes;
-            likesP.innerText = sumLikes; 
-        }
+            likesP.innerText = sumLikes;
+        };
         iconHeart.classList.add("fas", "fa-heart", "heartIcon");
         legende.appendChild(iconHeart);
         sumLikes += photographerMedia.likes;
     });
 };
-    //show photographers info
-const photographerFactoryMedia = () =>{
+//show photographers info
+const photographerFactoryMedia = () => {
     const photographerInfoDisp = document.querySelector(".photograph-header");
     const showNameDiv = document.createElement("div");
     showNameDiv.setAttribute("class", "photograph-header-name");
@@ -190,23 +192,18 @@ function openLightbox(photographer, medias, index) {
     lbm.appendChild(p);
     lbm.appendChild(m);
     lightbox.style.display = "flex";
-//    document.getElementById("previous").focus();
-    islightbox = true;
 }
 
 function closeLightbox() {
     lightbox.style.display = "none";
-    islightbox = false;
     const lbm = document.getElementById("lbMedia");
     while (lbm.childNodes.length > 0) {
         lbm.removeChild(lbm.childNodes[0]);
     }
 }
-let islightbox = false;
+
 // keyboard control of lightbox <- esc ->
-document.body.addEventListener("keydown", function (e) {
-    if(!islightbox)
-        return;
+lightbox.addEventListener("keydown", function (e) {
     console.log(e.key);
     switch (e.key) {
     case "ArrowLeft": lbLeft();
@@ -253,20 +250,31 @@ function updateLB() {
     c.appendChild(m);
 }
 
-
-
 /*-------- Likes/Price sticky div -----*/
 let likesP = null;
 function createLikesDiv() {
-    const likesDiv = document.getElementById("likesDiv");
+    const likesDiv = document.createElement("div");
+    likesDiv.className = "likesDiv";
 
-    likesP = likesDiv.children[0];
+    likesP = document.createElement("p");
+    likesP.className = "likesP";
     likesP.setAttribute("aria-labelledby", sumLikes + " likes");
     likesP.innerHTML = sumLikes;
 
-    const priceP = likesDiv.children[2];
+    const priceP = document.createElement("p");
+    priceP.className = "priceP";
     priceP.setAttribute("aria-labelledby", photographer.price + "€/hour");
     priceP.innerHTML = photographer.price + "€/hour";
+
+    const heartLikes = document.createElement("i");
+    heartLikes.className = "fas fa-heart heartI";
+
+
+    likesDiv.appendChild(likesP);
+    likesDiv.appendChild(heartLikes);
+    likesDiv.appendChild(priceP);
+
+    document.body.appendChild(likesDiv);
 }
 
 /*----- fetch corresponding id / create data arrays -----*/
